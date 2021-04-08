@@ -1,0 +1,52 @@
+<nav class="md-dash-navbar md-navbar navbar sticky-top navbar-expand-lg navbar-dark bg-primary">
+
+    <div class="container">
+
+        <a class="navbar-logo" href="{{ path('dash_home') }}">
+            <img src="{{ asset('/assets/images/logotype.png') }}" alt="Retouches chez Malika">
+        </a>
+
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarColor01">
+
+            <ul class="navbar-nav mr-auto">
+
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ path('dash_order_index') }}">Commandes</a>
+                </li>
+
+                {% if is_granted('ROLE_OWNER') %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ path('dash_product_index') }}">Produits</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ path('dash_repair_index') }}">Réparation</a>
+                    </li>
+                {% endif %}
+
+                {% if is_granted('ROLE_ADMIN') %}
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="fas fa-user"></i>
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                            <a class="dropdown-item" href="{{ path('dash_user_index') }}">Utilisateurs</a>
+                            <a class="dropdown-item" href="{{ path('app_logout') }}" onclick="return confirm('Vous êtes sûr que vous voulez vous déconnecter?')">Se déconnecter</a>
+                        </div>
+                    </li>
+                {% else %}
+                    <li class="nav-item">
+                        <a class="nav-link text-danger" href="{{ path('app_logout') }}" onclick="return confirm('Vous êtes sûr que vous voulez vous déconnecter?')">Se déconnecter</a>
+                    </li>
+                {% endif %}
+
+            </ul>
+
+        </div>
+
+    </div>
+
+</nav>

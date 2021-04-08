@@ -1,0 +1,11 @@
+{% extends 'dashboard/base.html.twig' %}
+
+{% block title %}Edition de la commande №{{ order.id }}{% endblock %}
+
+{% block body %}
+
+    <h1>Edition de la commande №{{ order.id }}</h1>
+
+    {{ include('dashboard/order/_form.html.twig', {'button_label': 'Mettre à jour'}) }}
+
+{% endblock %}

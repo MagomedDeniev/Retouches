@@ -1,0 +1,33 @@
+{{ form_start(form) }}
+
+    <div id="output-content" {% if not order.image %}style="display: none"{% endif %}>
+        <img id="output-image" src="{{ vich_uploader_asset(order) }}" alt="Image">
+    </div>
+
+    {{ form_row(form.imageFile) }}
+    {{ form_row(form.products) }}
+    {{ form_row(form.repairs) }}
+    {{ form_row(form.name) }}
+    {{ form_row(form.number) }}
+
+    {% if form.sms is defined %}
+        {{ form_row(form.sms) }}
+        <div class="putan" style="color:red;top: -15px;position: relative;">
+            La fonction d'envoi des sms est désactivée, vu que c'est la démo version.
+            Mais vous pouvez voir le code du service fonctionnel ici: src/Service/Notifier.php
+        </div>
+    {% endif %}
+
+    {{ form_row(form.toCompleteAt) }}
+    {{ form_row(form.price) }}
+    {{ form_row(form.note) }}
+
+    {% if form.canceled is defined %}
+        {{ form_row(form.canceled) }}
+    {% endif %}
+
+    <button class="btn btn-primary">{{ button_label|default('Ajouter') }}</button>
+    <a class="btn btn-secondary float-right" href="{{ app.request.headers.get('referer') }}">Annuler</a>
+
+{{ form_end(form) }}
+<br>

@@ -1,0 +1,91 @@
+{% extends 'dashboard/base.html.twig' %}
+
+{% block title %}Les commandes en cours{% endblock %}
+
+{% block body %}
+
+    <div class="bs-component text-center">
+
+        <ul class="nav nav-tabs order-status-tabs">
+
+            <li class="nav-item">
+                <a class="nav-link active" data-toggle="tab" href="#inProgress">En cours</a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" data-toggle="tab" href="#ready">Prêtes
+                    {% if ready %}
+                        <span class="badge badge-danger badge-pill">{{ ready | length }}</span>
+                    {% endif %}
+                </a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" data-toggle="tab" href="#canceled">
+                    Annulées
+                </a>
+            </li>
+
+        </ul>
+
+        <div id="myTabContent" class="tab-content">
+
+            <div class="tab-pane fade show active" id="inProgress">
+                {% if lates %}
+                    <h2 class="text-danger">En retard</h2>
+
+                    {{ orderCards(lates) }}
+                {% endif %}
+
+                {% if today %}
+                    <h2><i class="fab fa-gripfire"></i> Urgent</h2>
+
+                    {{ orderCards(today) }}
+                {% endif %}
+
+                {% if tomorrow %}
+                    <h2>Pour demain</h2>
+
+                    {{ orderCards(tomorrow) }}
+                {% endif %}
+
+                {% if rest %}
+                    <h2>Autres</h2>
+
+                    {{ orderCards(rest) }}
+                {% endif %}
+            </div>
+
+            <div class="tab-pane fade" id="ready">
+                {% if ready %}
+                    <h2>Les commandes prêtes</h2>
+
+                    {{ orderCards(ready, 'ready') }}
+                {% else %}
+                    Aucun commande trouvé
+                {% endif %}
+            </div>
+
+            <div class="tab-pane fade" id="canceled">
+                {% if canceled %}
+                    <h2>Les commandes annulées</h2>
+
+                    {{ orderCards(canceled, 'canceled') }}
+                {% else %}
+                    Aucun commande trouvé
+                {% endif %}
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="add-order-btn">
+        <a class="btn btn-sm btn-secondary" href="{{ path('dash_order_new') }}">Ajouter une commande</a>
+    </div>
+
+    <br>
+    <br>
+    <br>
+
+{% endblock %}

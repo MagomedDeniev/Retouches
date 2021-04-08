@@ -1,0 +1,72 @@
+{% extends 'dashboard/base.html.twig' %}
+
+{% block title %}Reçu №{{ order.id }}{% endblock %}
+
+{% block body %}
+
+    <table class="md-receipt table table-striped">
+        <tbody>
+            <tr class="md-receipt-header">
+                <th>
+                    <h3 class="m-0">
+                        Reçu №{{ order.id }}
+                    </h3>
+                </th>
+                <td style="float:right">
+                    <img width="100px" src="{{ asset('/assets/images/logo-white.png') }}" alt="Signature">
+                </td>
+            </tr>
+            <tr>
+                <th>Montant:</th>
+                <td>{{ order.price }}€</td>
+            </tr>
+            <tr>
+                <th>De :</th>
+                <td>{{ order.name }}</td>
+            </tr>
+            <tr>
+                <th>A :</th>
+                <td>Mme Malika</td>
+            </tr>
+            <tr>
+                <th>Pour :</th>
+                <td>
+                    {% for product in order.products %}
+                        {{ product.name }}{% if not loop.last %},{% endif %}
+                    {% endfor %}
+                        -
+                    {% for repair in order.repairs %}
+                        {{ repair.type }}{% if not loop.last %},{% endif %}
+                    {% endfor %}
+                </td>
+            </tr>
+            <tr>
+                <th>Lieu :</th>
+                <td>26, Bld François Grosso <br> 06000 Nice </td>
+            </tr>
+            <tr>
+                <th>Date :</th>
+                <td>{{ order.orderedAt ? order.orderedAt | date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Signature</th>
+                <td><img width="60px" src="{{ asset('/assets/images/sign.png') }}" alt="Signature"></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <nav>
+        <a class="btn btn-primary" href="{{ path('dash_order_edit', {'id': order.id}) }}">
+            <i class="fas fa-edit"></i>
+            Éditer
+        </a>
+
+        <button class="btn btn-secondary" onclick="window.print()">
+            <i class="fas fa-print"></i>
+            Imprimer
+        </button>
+    </nav>
+
+    <br>
+
+{% endblock %}

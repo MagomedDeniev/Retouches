@@ -1,0 +1,11 @@
+{% extends 'dashboard/base.html.twig' %}
+
+{% block title %}Edition du type «{{ repair.type }}»{% endblock %}
+
+{% block body %}
+
+    <h1>Edition du type «{{ repair.type }}»</h1>
+
+    {{ include('dashboard/repair/_form.html.twig', {'button_label': 'Mettre à jour'}) }}
+
+{% endblock %}

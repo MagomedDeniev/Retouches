@@ -1,0 +1,43 @@
+{% extends 'dashboard/base.html.twig' %}
+
+{% block title %}Les types de réparation{% endblock %}
+
+{% block body %}
+
+    <h1>Les types de réparation</h1>
+
+    <table class="table table-hover">
+
+        <thead class="thead-dark">
+
+            <tr>
+                <th>Type de réparation</th>
+                <th>Actions</th>
+            </tr>
+
+        </thead>
+
+        <tbody>
+
+            {% for repair in repairs %}
+                <tr>
+                    <td>{{ repair.type }}</td>
+                    <td>
+                        {{ crudAction(repair, 'repair') }}
+                    </td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="2">Aucun enregistrement trouvé</td>
+                </tr>
+            {% endfor %}
+
+        </tbody>
+
+    </table>
+
+    <a class="btn btn-success" href="{{ path('dash_repair_new') }}">Ajouter un type</a>
+
+    <br><br>
+
+{% endblock %}

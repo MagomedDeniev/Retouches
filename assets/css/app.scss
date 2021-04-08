@@ -1,0 +1,331 @@
+@import "mobile";
+@import "butler/butler.css";
+@import "raleway/raleway.css";
+
+// Global
+
+a, a:active, a:focus {
+    outline: none;
+}
+.navbar-toggler {
+    border-radius: 5px;
+}
+.add-order-btn {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    text-align: center;
+    left: 0;
+    padding: 10px 0;
+    background-color: rgba(0,0,0,0.5);
+    z-index: 99;
+}
+.add-order-btn .btn {
+    border-radius: 3px;
+}
+h1, h2 {
+    margin: 20px 0 40px;
+}
+.front-body h1, .front-body h2 {
+    text-align: center;
+    font-family: "Butler",serif;
+    font-weight: 400;
+    margin: 20px 0 0 !important;
+}
+.alert {
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+    z-index: 999;
+    padding: 15px 10px;
+    margin: unset;
+}
+.alert-add-order {
+    bottom: 70px;
+}
+.md-text-block {
+    margin: 50px 0 55px;
+}
+.md-gray-bg {
+    background-color: #f2f2f2;
+    display: flex;
+}
+
+// Login
+
+.login-aligner {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.login-logo img {
+    width: 220px;
+}
+.login-logo {
+    width: 100%;
+    display: block;
+    text-align: center;
+}
+
+// Navbar & Logotype
+
+.md-bottom-navbar {
+    border-top: 1px solid #1e1e1e;
+}
+.md-dash-navbar {
+    margin-bottom: 48px;
+}
+.bg-primary {
+    background-color: #0c0c0c !important;
+}
+.navbar-logo {
+    position: relative;
+    width: 250px;
+    height: 40px;
+}
+.navbar-logo img {
+    width: 160px;
+    position: absolute;
+    top: -11px;
+    left: 45px;
+}
+.nav-btn-item .btn {
+    top: 5px;
+    position: relative;
+}
+
+// Table & CRUD
+
+.scrollable-table {
+    overflow: auto;
+}
+.badge {
+    padding: 4px 8px 5px;
+}
+.table th, .table td {
+    vertical-align: middle;
+    text-align: center;
+}
+.table .thead-dark th {
+    background-color: #1a1a1a;
+}
+.crud-dot-btn {
+    padding: 0 8px;
+}
+.crud-dot-btn:focus, .crud-dot-btn.focus {
+    box-shadow: unset;
+}
+.crud-image {
+    width: 50px;
+    height: 50px;
+    border-radius: 3px;
+    margin: 0 auto;
+    display: table;
+    background-position: center;
+    background-size: cover;
+}
+#output-content {
+    text-align: center;
+}
+#output-image {
+    border-radius: 3px;
+    height: 160px;
+}
+.pagination .page-link:focus {
+    box-shadow: unset !important;
+}
+.pagination .page-link {
+    border-radius: 5px;
+}
+
+// Table receipt
+
+.md-receipt {
+    border: 2px solid #ddd;
+}
+.md-receipt th {
+    font-weight: 800;
+}
+.md-receipt th, .md-receipt td {
+    text-align: left;
+    font-family: Arial, sans-serif;
+}
+.md-receipt-header {
+    background-color: #1a1a1a !important;
+}
+.md-receipt-header h3 {
+    color: #fff;
+}
+
+// Orders cards
+
+.nav-tabs .nav-link.active, .nav-tabs .nav-item.show .nav-link {
+    border-radius: 5px 5px 0 0;
+}
+.card {
+    border-radius: 5px;
+}
+.card-top-block, .card-top-block span {
+    border-radius: 5px 5px 0 0;
+}
+.order-status-tabs .badge {
+    padding: 4px 8px;
+}
+.order-status-tabs {
+    justify-content: center;
+    margin-bottom: 40px;
+}
+.card-top-block {
+    display: table;
+    height: 200px;
+    width: 100%;
+    background-position: center;
+    background-color: #1a1a1a;
+    background-size: cover;
+    text-transform: uppercase;
+    text-align: center;
+    font-weight: 600;
+    font-size: 1rem;
+    color: white;
+}
+
+.card-top-block span {
+    text-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+    background-color: rgba(0,0,0,0.2);
+    display: table-cell;
+    vertical-align: middle;
+}
+.md-cards-box .card-footer {
+    position: relative;
+}
+.btn {
+    border-radius: 3px;
+}
+.card-info {
+    float: right;
+    position: absolute;
+    right: 18px;
+    top: 17px;
+    color: #1a1a1a;
+}
+.order-card-actions {
+    position: absolute;
+    right: 10px;
+    width: 40px;
+    height: 26px;
+    top: 5px;
+}
+.order-card-actions button {
+    font-size: 24px;
+    color: white;
+    line-height: 29px;
+}
+.order-card-actions button:hover {
+    color: #0c0c0c;
+}
+.order-card-actions .dropdown-menu {
+    left: unset !important;
+    border: unset;
+    border-radius: 3px;
+    top: 28px !important;
+    right: 3px !important;
+    transform: unset !important;
+}
+.dropdown-item {
+    padding: 6px 14px;
+}
+.dropdown-menu.show {
+    border-radius: 5px;
+}
+
+// Slider
+
+.md-slider {
+    border-radius: 3px;
+    overflow: hidden;
+}
+.md-slider .carousel-indicators li {
+    height: 6px;
+    width: 6px;
+    border-radius: 100%;
+    border: unset;
+    margin: 0 5px;
+}
+
+// Lined title
+
+.md-lined-title {
+    width: 100%;
+    text-align: center;
+    margin-bottom: 28px;
+}
+.md-lined-title h6 {
+    font-family: "Raleway",sans-serif;
+    display: inline-block;
+    padding: 0 153px 0 157px;
+    position: relative;
+    margin: unset;
+    color: #caa77b;
+}
+.md-lined-title h6:before {
+    content: "";
+    background-image: url(/assets/images/left-line.png);
+    left: 0;
+    width: 138px;
+    height: 10px;
+    position: absolute;
+    background-repeat: no-repeat;
+    top: 3px;
+}
+.md-lined-title h6:after {
+    content: "";
+    background-image: url(/assets/images/right-line.png);
+    right: 0;
+    width: 138px;
+    height: 10px;
+    position: absolute;
+    background-repeat: no-repeat;
+    top: 3px;
+}
+
+// Responsive image block
+
+.md-responsive-image {
+    height: 300px;
+    background-size: cover;
+    background-position: top;
+    position: relative;
+}
+.md-image-darker {
+    background-color: black;
+    height: 100%;
+    opacity: 0.7;
+}
+.md-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.md-text h1 {
+    color: white;
+}
+.md-map-image {
+    background-position: center;
+}
+.md-map-image .md-image-darker {
+    opacity: 0.3
+}
+.md-map-image h1, .md-map-image p {
+    color: #be9667
+}
+
+// Footer
+
+.md-footer {
+    padding: 40px 20px;
+}
+.md-footer a {
+    color: #73797d;
+}

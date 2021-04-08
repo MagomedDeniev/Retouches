@@ -1,0 +1,18 @@
+{% extends 'dashboard/base.html.twig' %}
+
+{% block title %}Ajout d'un utilisateur{% endblock %}
+
+{% block body %}
+
+    <h1>Ajout d'un utilisateur</h1>
+
+    {{ form_start(form) }}
+
+        {{ form_widget(form) }}
+
+        <button class="btn btn-primary">{{ button_label|default('Ajouter') }}</button>
+        <a class="btn btn-secondary" href="{{ path('dash_user_index') }}">Annuler</a>
+
+    {{ form_end(form) }}
+
+{% endblock %}

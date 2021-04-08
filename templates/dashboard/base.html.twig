@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+    <head>
+        <title>{% block title %}{% endblock %} - Retouches chez Malika</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+        {% block stylesheets %}
+            <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/chosen.css') }}">
+            {{ encore_entry_link_tags('app') }}
+        {% endblock %}
+    </head>
+
+    <body class="dash-body">
+
+        {% include 'dashboard/layouts/navbar.html.twig' %}
+
+        <div class="container md-container">
+
+            {% for label, messages in app.flashes %}
+                {% for message in messages %}
+                    <div class="alert alert-dismissible alert-{{ label }}">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            {% endfor %}
+
+            {% block body %}{% endblock %}
+
+        </div>
+
+        {% block javascripts %}
+            {{ encore_entry_script_tags('app') }}
+        {% endblock %}
+
+    </body>
+
+</html>

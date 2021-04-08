@@ -1,0 +1,43 @@
+{% extends 'dashboard/base.html.twig' %}
+
+{% block title %}Produits de couture{% endblock %}
+
+{% block body %}
+
+    <h1>Les produits de couture</h1>
+
+    <table class="table table-hover">
+
+        <thead class="thead-dark">
+
+            <tr>
+                <th>Nom du produit</th>
+                <th>Actions</th>
+            </tr>
+
+        </thead>
+
+        <tbody>
+
+            {% for product in products %}
+                <tr>
+                    <td>{{ product.name }}</td>
+                    <td>
+                        {{ crudAction(product, 'product') }}
+                    </td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="2">Aucun enregistrement trouvé</td>
+                </tr>
+            {% endfor %}
+
+        </tbody>
+
+    </table>
+
+    <a class="btn btn-success" href="{{ path('dash_product_new') }}">Ajouter un produit</a>
+
+    <br><br>
+
+{% endblock %}

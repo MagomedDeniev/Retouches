@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+    <head>
+        <title>{% block title %}{% endblock %}Retouches chez Malika</title>
+        <meta name="description" content="Service de couturier à Nice">
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+        <link rel="shortcut icon" href="{{ asset('assets/images/favicon.ico') }}" type="image/x-icon">
+        <link rel="apple-touch-icon" href="{{ asset('assets/images/apple-touch-icon.png') }}">
+        <link rel="icon" href="{{ asset('assets/images/favicon.ico') }}" type="image/x-icon">
+        {% block stylesheets %}
+            {{ encore_entry_link_tags('app') }}
+        {% endblock %}
+    </head>
+
+    <body class="front-body">
+
+        {% block navbar %}
+            {% include 'layouts/navbar.html.twig' %}
+        {% endblock %}
+
+        {% block body %}{% endblock %}
+
+        {% block javascripts %}
+            {{ encore_entry_script_tags('app') }}
+        {% endblock %}
+
+        {% block footer %}
+            {% include 'layouts/footer.html.twig' %}
+        {% endblock %}
+
+    </body>
+
+</html>

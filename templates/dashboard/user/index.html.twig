@@ -1,0 +1,39 @@
+{% extends 'dashboard/base.html.twig' %}
+
+{% block title %}Les utilisateurs{% endblock %}
+
+{% block body %}
+
+    <h1>Les utilisateurs</h1>
+
+    <table class="table table-hover">
+
+        <thead class="thead-dark">
+
+            <tr>
+                <th>Id</th>
+                <th>Username</th>
+            </tr>
+
+        </thead>
+
+        <tbody>
+
+            {% for user in users %}
+                <tr>
+                    <td>{{ user.id }}</td>
+                    <td>{{ user.username }}{{ crudAction(user, 'user') }}</td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="5">no records found</td>
+                </tr>
+            {% endfor %}
+
+        </tbody>
+
+    </table>
+
+    <a class="btn btn-success" href="{{ path('dash_user_new') }}">Ajouter un utilisateur</a>
+
+{% endblock %}

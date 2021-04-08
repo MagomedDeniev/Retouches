@@ -1,0 +1,83 @@
+<div class="md-cards-box row row-cols-1 row-cols-md-3">
+
+    {% for order in orders %}
+
+        <div class="md-card-box col mb-4">
+
+            <div class="card">
+
+                <div style="background-image: url('{{ vich_uploader_asset(order) }}');" class="card-top-block">
+
+                    <div class="order-card-actions">
+
+                        <button type="button" class="btn crud-dot-btn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="fas fa-ellipsis-h"></i>
+                        </button>
+
+                        <div class="dropdown-menu" style="left: unset">
+
+                            <div class="black-background"></div>
+
+                            {% if is_granted('ROLE_OWNER') %}
+                                <a href="{{ path('dash_order_edit', {'id' : order.id}) }}" class="dropdown-item">
+                                    <i class="fa fa-edit" aria-hidden="true"></i> Éditer la commande
+                                </a>
+                            {% endif %}
+
+                            {% if status != 'canceled' %}
+                                <a href="{{ path('dash_order_cancel', {'id' : order.id}) }}" class="dropdown-item" onclick="return confirm('Vous êtes sûr que la commande №{{ order.id }} est annulée?')">
+                                    <i class="fas fa-times-circle text-danger" aria-hidden="true"></i> Anuller la commande
+                                </a>
+                            {% endif %}
+
+                        </div>
+
+                    </div>
+
+                    <span>Сommande № {{ order.id }}</span>
+
+                </div>
+
+                <div class="card-body">
+                    <h5 class="card-title">{{ order.name }}</h5>
+                    <p>
+                        {{ order.number }}
+                        <br>
+                        {% for product in order.products %}
+                            {{ product.name }}{% if not loop.last %},{% endif %}
+                        {% endfor %}
+                        -
+                        {% for repair in order.repairs %}
+                            {{ repair.type }}{% if not loop.last %},{% endif %}
+                        {% endfor %}
+                    </p>
+                    <h6 class="card-title m-0">Prix: {{ order.price }}€</h6>
+                </div>
+
+                <div class="card-footer">
+
+                    <small class="text-muted">
+                        {% if status == 'in_progress' %}
+                            <a href="{{ path('dash_ready', {'id': order.id}) }}" class="btn btn-primary btn-sm" onclick="return confirm('Vous êtes sûr que la commande №{{ order.id }} est prête?')">La commande est prête</a>
+                        {% elseif status == 'ready' %}
+                            <a href="{{ path('dash_inprogress', {'id': order.id}) }}" class="btn btn-secondary btn-sm" onclick="return confirm('Vous êtes sûr que la commande №{{ order.id }} n\'est pas prête?')">Pas prête</a>
+                            <a href="{{ path('dash_delivered', {'id': order.id}) }}" class="btn btn-success btn-sm" onclick="return confirm('Vous êtes sûr que la commande №{{ order.id }} est livré?')">Livré</a>
+                        {% else %}
+                            <a href="{{ path('dash_order_uncancel', {'id': order.id}) }}" class="btn btn-primary btn-sm" onclick="return confirm('Vous êtes sûr que la commande №{{ order.id }} n\'est plus anullé?')">N'est plus anullé</a>
+                        {% endif %}
+                    </small>
+
+                    {% if order.note %}
+                        <span class="card-info">
+                                <i class="fas fa-info-circle" data-toggle="tooltip" title="{{ order.note }}"></i>
+                            </span>
+                    {% endif %}
+                </div>
+
+            </div>
+
+        </div>
+
+    {% endfor %}
+
+</div>

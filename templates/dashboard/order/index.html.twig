@@ -1,0 +1,63 @@
+{% extends 'dashboard/base.html.twig' %}
+
+{% block title %}Les commandes{% endblock %}
+
+{% block body %}
+
+    <h1>Les commandes</h1>
+
+    <div class="scrollable-table">
+
+        <table class="table table-hover">
+
+            <thead class="thead-dark">
+
+            <tr>
+                <th>Сommande №</th>
+                <th>Image</th>
+                <th>Nom du client</th>
+                <th>Statut</th>
+                <th>Prix</th>
+            </tr>
+
+            </thead>
+
+            <tbody>
+
+            {% for order in orders %}
+                <tr>
+                    <td>{{ order.id }}</td>
+                    <td>
+                        <span class="crud-image" style="background-image: url('{{ vich_uploader_asset(order) }}')"></span>
+                    </td>
+                    <td>
+                        <a href="{{ path('dash_order_show', {'id': order.id}) }}">{{ order.name }}</a>
+                        {% if order.acceptedBy == app.user or is_granted('ROLE_OWNER') %}
+                            {{ crudAction(order,'order', order.acceptedBy) }}
+                        {% endif %}
+                    </td>
+                    <td>{{ orderStatusBadge(order.status) }}</td>
+                    <td>{{ order.price }}€</td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="11">Aucun enregistrement trouvé</td>
+                </tr>
+            {% endfor %}
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+    {{ pagination.display }}
+
+    <div class="add-order-btn">
+        <a class="btn btn-sm btn-secondary" href="{{ path('dash_order_new') }}">Ajouter une commande</a>
+    </div>
+
+    <br>
+    <br>
+
+{% endblock %}
